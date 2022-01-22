@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Anamnesis</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Occupation area</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @anamnesis.each do |anamnesi| %>
+      <tr>
+        <td><%= anamnesi.occupation_area_id %></td>
+        <td><%= link_to 'Show', anamnesi %></td>
+        <td><%= link_to 'Edit', edit_anamnesi_path(anamnesi) %></td>
+        <td><%= link_to 'Destroy', anamnesi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Anamnesi', new_anamnesi_path %>

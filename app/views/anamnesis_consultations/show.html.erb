@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Anamnesi:</strong>
+  <%= @anamnesis_consultation.anamnesi_id %>
+</p>
+
+<p>
+  <strong>Consultation:</strong>
+  <%= @anamnesis_consultation.consultation_id %>
+</p>
+
+<p>
+  <strong>Answer:</strong>
+  <%= @anamnesis_consultation.answer %>
+</p>
+
+<%= link_to 'Edit', edit_anamnesis_consultation_path(@anamnesis_consultation) %> |
+<%= link_to 'Back', anamnesis_consultations_path %>

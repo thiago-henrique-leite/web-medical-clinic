@@ -1,0 +1,32 @@
+<%= form_with(model: anamnesis_consultation) do |form| %>
+  <% if anamnesis_consultation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(anamnesis_consultation.errors.count, "error") %> prohibited this anamnesis_consultation from being saved:</h2>
+
+      <ul>
+        <% anamnesis_consultation.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :anamnesi_id %>
+    <%= form.text_field :anamnesi_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :consultation_id %>
+    <%= form.text_field :consultation_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :answer %>
+    <%= form.text_area :answer %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

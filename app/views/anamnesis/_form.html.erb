@@ -1,0 +1,22 @@
+<%= form_with(model: anamnesi) do |form| %>
+  <% if anamnesi.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(anamnesi.errors.count, "error") %> prohibited this anamnesi from being saved:</h2>
+
+      <ul>
+        <% anamnesi.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :occupation_area_id %>
+    <%= form.text_field :occupation_area_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

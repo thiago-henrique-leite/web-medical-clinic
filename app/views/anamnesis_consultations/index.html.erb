@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Anamnesis Consultations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Anamnesi</th>
+      <th>Consultation</th>
+      <th>Answer</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @anamnesis_consultations.each do |anamnesis_consultation| %>
+      <tr>
+        <td><%= anamnesis_consultation.anamnesi_id %></td>
+        <td><%= anamnesis_consultation.consultation_id %></td>
+        <td><%= anamnesis_consultation.answer %></td>
+        <td><%= link_to 'Show', anamnesis_consultation %></td>
+        <td><%= link_to 'Edit', edit_anamnesis_consultation_path(anamnesis_consultation) %></td>
+        <td><%= link_to 'Destroy', anamnesis_consultation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Anamnesis Consultation', new_anamnesis_consultation_path %>
