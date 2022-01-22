@@ -1,0 +1,23 @@
+rails g scaffold User name:string email:string password:string cpf:string birthday:date phone:string admin:binary
+
+rails g scaffold Patient health_insurance:string card_number:string marital_status:string gender:string profession:date  zipcode:string address:string state:string neighborhood:string city:string address_number:integer
+
+rails g scaffold Doctor crm:integer occupation_area:references
+
+rails g scaffold Consultation patient:references doctor:references consultation_date:date area:references link:string
+
+rails g scaffold Anamnesi area:references
+
+rails g AnamnesisUser anamnese:references consultation:references answer:text
+
+rails g scaffold Question description:text anamnesi:references
+
+rails g scaffold Prescription consultation:references description:string
+
+
+#############################
+
+- Tela de Login
+- Tela do Paciente
+- Tela para agendar consulta
+- Tela do Médico
