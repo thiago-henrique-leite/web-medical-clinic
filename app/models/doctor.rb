@@ -11,14 +11,14 @@ class Doctor < ApplicationRecord
     length: { minimum: 5 },
     format: { with: /[[:alpha:]][[:space:]]+[[:alpha:]]/, message: 'Deve conter sobrenome' }
     
-  validates :cpf, cpf: true
+  validates :cpf, cpf: true, uniqueness: true
   validates :phone, phone: true
-  validates :crm, presence: true, numericality: { only_integer: true }
+  validates :crm, presence: true, numericality: { only_integer: true }, uniqueness: true
 
   validates :birthday, allow_blank: true, allow_nil: true,
     timeliness: { before: -> { Date.current }, type: :date, before_message: 'Data inválida' }
 
-  after_create :fill_address_by_zipcode
+  after_create :format_cpf
 
   private
 

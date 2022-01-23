@@ -10,12 +10,12 @@ class Patient < ApplicationRecord
     length: { minimum: 5 },
     format: { with: /[[:alpha:]][[:space:]]+[[:alpha:]]/, message: 'Deve conter sobrenome' }
     
-  validates :cpf, cpf: true
+  validates :cpf, cpf: true, uniqueness: true
   validates :phone, phone: true
   validates :zipcode, cep: true
   validates :profession, presence: true
   validates :health_insurance, presence: true
-  validates :card_number, presence: true, numericality: { only_integer: true }
+  validates :card_number, presence: true, numericality: { only_integer: true }, uniqueness: true
   validates :address_number, allow_blank: true, allow_nil: true, numericality: true
     
   validates :birthday,
@@ -29,8 +29,6 @@ class Patient < ApplicationRecord
     
   after_create :fill_address_by_zipcode, :format_cpf
 
-  private
-
   def format_cpf
     self.cpf = CPF.new(self.cpf).formatted
   end
@@ -42,5 +40,6 @@ class Patient < ApplicationRecord
     self.state = address[:state]
     self.neighborhood = address[:neighborhood]
     self.address = address[:address]
+    self.save!
   end     
 end

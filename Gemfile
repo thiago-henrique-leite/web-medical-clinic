@@ -43,6 +43,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'letter_opener'
+  gem 'rails-erd'
 end
 
 group :test do
@@ -70,3 +71,4 @@ gem 'validates_cpf_cnpj'
 gem 'jc-validates_timeliness'
 gem 'google-api-client', require: 'google/apis/calendar_v3'
 gem 'googleauth'
+gem 'bootstrap_sb_admin_base_v2'
