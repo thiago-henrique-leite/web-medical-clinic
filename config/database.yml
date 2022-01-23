@@ -1,5 +1,5 @@
 default: &default
-  host: db
+  # host: db
   adapter: postgresql
   encoding: unicode
   username: postgres
