@@ -9,5 +9,8 @@ Rails.application.routes.draw do
   resources :occupation_areas
 
   root 'home#index'
+
+  get 'dashboard/patient', to: 'dashboard_patient#index'
+  get 'dashboard/doctor', to: 'dashboard_doctor#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
