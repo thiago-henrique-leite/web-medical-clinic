@@ -11,7 +11,7 @@ class Doctor < ApplicationRecord
     length: { minimum: 5 },
     format: { with: /[[:alpha:]][[:space:]]+[[:alpha:]]/, message: 'Deve conter sobrenome' }
     
-  validates :cpf, cpf: true, uniqueness: true
+  validates :cpf, cpf: true
   validates :phone, phone: true
   validates :crm, presence: true, numericality: { only_integer: true }, uniqueness: true
 

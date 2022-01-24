@@ -1,0 +1,81 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<div class="container">
+  <div id="logreg-forms">
+    <form class="form-signin">
+      <div class="row justify-content-center">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "shadow p-3 mb-3 bg-info rounded") do |f| %>
+          <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Médico(a) - Sign in</h1>
+          <div class="field">
+            <div class="text-box"><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control shadow rounded" %></div>
+          </div>
+
+          <div class="field">
+            <div class="text-box"><%= f.password_field :password, autocomplete: "current-password", placeholder: "Senha", class: "form-control shadow rounded" %></div>
+          </div>
+
+          <div class="field">
+            <%= f.check_box :remember_me %>
+            <%= f.label :lembrar_minha_senha %>
+          </div>
+
+          <div class="form-group row justify-content-center">
+            <%= f.submit "Log in", class: "btn btn-outline-light btn-lg login" %>
+            <style> 
+              .btn.btn-outline-light.btn-lg.login {
+                  background-color: green;
+                  transition: all 0.3s;
+                  cursor: pointer;
+              }
+              .btn.btn-outline-light.btn-lg.login:hover{
+                -webkit-filter: drop-shadow(10px 7px 5px rgba(0,0,0,.5));
+                filter: drop-shadow(10px 7px 3px rgba(0,0,0,.5));
+              }
+            </style>  
+          </div>
+
+          <div class="form-group row justify-content-center">  
+            <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-outline-light btn-lg signup" %><br />
+            <style> 
+              .btn.btn-outline-light.btn-lg.signup {
+                  background-color: blue;
+                  transition: all 0.3s;
+                  cursor: pointer;
+              }
+              .btn.btn-outline-light.btn-lg.signup:hover{
+                -webkit-filter: drop-shadow(10px 7px 5px rgba(0,0,0,.5));
+                filter: drop-shadow(10px 7px 3px rgba(0,0,0,.5));
+              }
+            </style>  
+          </div>
+        <% end %>
+        
+        <div class="form-group row justify-content-center">
+          <%= link_to "Esqueceu a senha?", new_password_path(resource_name), class: "btn btn-outline-light btn-lg forgot-password"%><br/>
+            <style>
+              .btn.btn-outline-light.btn-lg.forgot-password {
+                    background-color: red;
+                    transition: all 0.3s;
+                    cursor: pointer;
+              }
+              .btn.btn-outline-light.btn-lg.forgot-password:hover{
+                -webkit-filter: drop-shadow(10px 7px 5px rgba(0,0,0,.5));
+                filter: drop-shadow(10px 7px 3px rgba(0,0,0,.5));
+              }
+            </style>  
+          </div>
+      </div>
+    </form>
+  </div>
+</div>

@@ -13,40 +13,67 @@
 
 <div class="container">
   <div id="logreg-forms">
-    <form class="form-signin">
-      <div class="row justify-content-center">
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "shadow p-3 mb-3 bg-info rounded") do |f| %>
-          <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Médico(a) - Sign in</h1>
-          <div class="field">
-            <div class="text-box"><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control shadow rounded" %></div>
-          </div>
+    <div class="row justify-content-center">
+      <%= render 'shared/errors', obj: resource %>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), class: "shadow p-3 mb-3 bg-info rounded") do |f| %>
+        <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Médico(a) - Sign in</h1>
+        <div class="field">
+          <div class="text-box"><%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email", class: "form-control shadow rounded" %></div>
+        </div>
 
-          <div class="field">
-            <div class="text-box"><%= f.password_field :password, autocomplete: "current-password", placeholder: "Senha", class: "form-control shadow rounded" %></div>
-          </div>
+        <div class="field">
+          <div class="text-box"><%= f.password_field :password, autocomplete: "current-password", placeholder: "Senha", class: "form-control shadow rounded" %></div>
+        </div>
 
-          <div class="field">
-            <%= f.check_box :remember_me %>
-            <%= f.label :lembrar_minha_senha %>
-          </div>
+        <div class="field">
+          <%= f.check_box :remember_me %>
+          <%= f.label :lembrar_minha_senha %>
+        </div>
 
-          <div class="form-group row justify-content-center">
-            <%= f.submit "Log in", class: "btn btn-outline-light btn-lg login" %>
-            <style> .btn.btn-outline-light.btn-lg.login {background-color: green }</style>  
-          </div>
+        <div class="form-group row justify-content-center">
+          <%= f.submit "Log in", class: "btn btn-outline-light btn-lg login" %>
+          <style> 
+            .btn.btn-outline-light.btn-lg.login {
+                background-color: green;
+                transition: all 0.3s;
+                cursor: pointer;
+            }
+            .btn.btn-outline-light.btn-lg.login:hover{
+              -webkit-filter: drop-shadow(10px 7px 5px rgba(0,0,0,.5));
+              filter: drop-shadow(10px 7px 3px rgba(0,0,0,.5));
+            }
+          </style>  
+        </div>
 
-          <div class="form-group row justify-content-center">  
-            <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-outline-light btn-lg signup" %><br />
-            <style> .btn.btn-outline-light.btn-lg.signup {background-color: blue }</style>  
-          </div>
-
-          <div class="form-group row justify-content-center">
-            <%= link_to "Esqueceu a senha?", new_password_path(resource_name), class: "btn btn-outline-light btn-lg forgot-password" %><br />
-            <style> .btn.btn-outline-light.btn-lg.forgot-password {background-color: red }</style>  
-          </div>
-        <% end %>
-      </div>
-    </form>
+        <div class="form-group row justify-content-center">  
+          <%= link_to "Sign up", new_registration_path(resource_name), class: "btn btn-outline-light btn-lg signup" %><br />
+          <style> 
+            .btn.btn-outline-light.btn-lg.signup {
+                background-color: blue;
+                transition: all 0.3s;
+                cursor: pointer;
+            }
+            .btn.btn-outline-light.btn-lg.signup:hover{
+              -webkit-filter: drop-shadow(10px 7px 5px rgba(0,0,0,.5));
+              filter: drop-shadow(10px 7px 3px rgba(0,0,0,.5));
+            }
+          </style>  
+        </div>
+        <div class="form-group row justify-content-center">
+          <%= link_to "Esqueceu a senha?", new_password_path(resource_name), class: "btn btn-outline-light btn-lg forgot-password"%><br/>
+            <style>
+              .btn.btn-outline-light.btn-lg.forgot-password {
+                    background-color: red;
+                    transition: all 0.3s;
+                    cursor: pointer;
+              }
+              .btn.btn-outline-light.btn-lg.forgot-password:hover{
+                -webkit-filter: drop-shadow(10px 7px 5px rgba(0,0,0,.5));
+                filter: drop-shadow(10px 7px 3px rgba(0,0,0,.5));
+              }
+          </style>  
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
-

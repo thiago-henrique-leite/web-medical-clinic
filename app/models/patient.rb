@@ -6,6 +6,8 @@ class Patient < ApplicationRecord
 
   has_many :consultations
 
+  MARITAL_STATUSES = %w[Solteiro Casado Separado Divorciado Viúvo].freeze
+
   validates :name,
     length: { minimum: 5 },
     format: { with: /[[:alpha:]][[:space:]]+[[:alpha:]]/, message: 'Deve conter sobrenome' }
