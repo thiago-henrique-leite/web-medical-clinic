@@ -1,0 +1,2 @@
+CREATE DATABASE web_medical_clinic_development;
+CREATE DATABASE web_medical_clinic_test;
