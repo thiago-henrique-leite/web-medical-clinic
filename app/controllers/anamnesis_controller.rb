@@ -65,6 +65,6 @@ class AnamnesisController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def anamnesi_params
-      params.require(:anamnesi).permit(:occupation_area_id)
+      params.require(:anamnesi).permit(:speciality_id)
     end
 end

@@ -1,10 +1,10 @@
-<%= form_with(model: occupation_area) do |form| %>
-  <% if occupation_area.errors.any? %>
+<%= form_with(model: speciality) do |form| %>
+  <% if speciality.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(occupation_area.errors.count, "error") %> prohibited this occupation_area from being saved:</h2>
+      <h2><%= pluralize(speciality.errors.count, "error") %> prohibited this speciality from being saved:</h2>
 
       <ul>
-        <% occupation_area.errors.each do |error| %>
+        <% speciality.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>

@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :consultations
   devise_for :doctors
   devise_for :patients
-  resources :occupation_areas
+  resources :specialities
 
   root 'home#index'
 

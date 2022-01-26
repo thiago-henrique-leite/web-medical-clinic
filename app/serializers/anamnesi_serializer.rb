@@ -1,4 +1,4 @@
 class AnamnesiSerializer < ActiveModel::Serializer
   attributes :id
-  has_one :occupation_area
+  has_one :speciality
 end

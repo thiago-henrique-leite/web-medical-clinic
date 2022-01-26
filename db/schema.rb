@@ -16,10 +16,10 @@ ActiveRecord::Schema.define(version: 2022_01_22_194030) do
   enable_extension "plpgsql"
 
   create_table "anamnesis", force: :cascade do |t|
-    t.bigint "occupation_area_id", null: false
+    t.bigint "speciality_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["occupation_area_id"], name: "index_anamnesis_on_occupation_area_id"
+    t.index ["speciality_id"], name: "index_anamnesis_on_speciality_id"
   end
 
   create_table "anamnesis_consultations", force: :cascade do |t|
@@ -52,21 +52,14 @@ ActiveRecord::Schema.define(version: 2022_01_22_194030) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "crm"
-    t.bigint "occupation_area_id", null: false
+    t.bigint "speciality_id", null: false
     t.string "name"
     t.string "cpf"
     t.date "birthday"
     t.string "phone"
     t.index ["email"], name: "index_doctors_on_email", unique: true
-    t.index ["occupation_area_id"], name: "index_doctors_on_occupation_area_id"
     t.index ["reset_password_token"], name: "index_doctors_on_reset_password_token", unique: true
-  end
-
-  create_table "occupation_areas", force: :cascade do |t|
-    t.string "name"
-    t.text "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
+    t.index ["speciality_id"], name: "index_doctors_on_speciality_id"
   end
 
   create_table "patients", force: :cascade do |t|
@@ -112,12 +105,19 @@ ActiveRecord::Schema.define(version: 2022_01_22_194030) do
     t.index ["anamnesi_id"], name: "index_questions_on_anamnesi_id"
   end
 
-  add_foreign_key "anamnesis", "occupation_areas"
+  create_table "specialities", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "anamnesis", "specialities"
   add_foreign_key "anamnesis_consultations", "anamnesis"
   add_foreign_key "anamnesis_consultations", "consultations"
   add_foreign_key "consultations", "doctors"
   add_foreign_key "consultations", "patients"
-  add_foreign_key "doctors", "occupation_areas"
+  add_foreign_key "doctors", "specialities"
   add_foreign_key "prescriptions", "consultations"
   add_foreign_key "questions", "anamnesis"
 end

@@ -1,8 +1,8 @@
 # Populando o Banco de Dados da Aplicação
 
 ActiveRecord::Base.transaction do
-  ## Populando a tabela de OccupationAreas
-  occupation_areas = {
+  ## Populando a tabela de Specialities
+  specialities = {
     'Cardiologia' => 'A Cardiologia se dedica ao cuidado de um dos principais órgãos do corpo humano: o coração.',
     'Dermatologia' => 'Voltada para o diagnóstico e tratamento das doenças de pele.',
     'Oncologia' => 'Área voltada para o diagnóstico e tratamento do câncer.',
@@ -12,15 +12,15 @@ ActiveRecord::Base.transaction do
     'Ginecologia' => 'Prática da medicina que lida diretamente com a saúde do aparelho reprodutor feminino e mamas.',
   }
 
-  occupation_areas.each do |name, description|
-    OccupationArea.find_or_create_by(name: name, description: description)
+  specialities.each do |name, description|
+    Speciality.find_or_create_by(name: name, description: description)
   end
 
   ## Populando a tabela de Doctors
   Doctor.create!(
     email: 'medico@email.com',
     crm: '1213', 
-    occupation_area_id: 1, 
+    speciality_id: 1, 
     name: 'Olavo da Silva', 
     cpf: '966.510.320-20', 
     birthday: Date.parse('13/03/1967'), 
@@ -46,8 +46,8 @@ ActiveRecord::Base.transaction do
   )
 
   ## Populando a tabela de Anaminesis
-  occupation_areas.each do |name, description|
-    Anamnesi.find_or_create_by(occupation_area_id: 1)
+  specialities.each do |name, description|
+    Anamnesi.find_or_create_by(speciality_id: 1)
   end
 
   ## Populando a tabela de Consultations

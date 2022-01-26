@@ -5,7 +5,7 @@ class Doctor < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :consultations
-  belongs_to :occupation_area
+  belongs_to :speciality
 
   validates :name,
     length: { minimum: 5 },

@@ -1,6 +1,6 @@
 require "test_helper"
 
-class OccupationAreaTest < ActiveSupport::TestCase
+class SpecialityTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
