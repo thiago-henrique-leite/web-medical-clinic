@@ -7,7 +7,7 @@ class Consultation < ApplicationRecord
   validates :consultation_date,
     timeliness: { after: -> { Date.current }, type: :date, after_message: 'Data inválida' }
 
-  after_create :generate_google_meet_link
+  before_create :generate_google_meet_link
 
   private
 
