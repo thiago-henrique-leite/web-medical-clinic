@@ -1,4 +1,4 @@
-class OccupationArea < ApplicationRecord
+class Speciality < ApplicationRecord
   has_many :anamnesis
   has_many :doctors
 

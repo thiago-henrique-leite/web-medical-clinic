@@ -13,7 +13,7 @@
   <tbody>
     <% @anamnesis.each do |anamnesi| %>
       <tr>
-        <td><%= anamnesi.occupation_area_id %></td>
+        <td><%= anamnesi.speciality_id %></td>
         <td><%= link_to 'Show', anamnesi %></td>
         <td><%= link_to 'Edit', edit_anamnesi_path(anamnesi) %></td>
         <td><%= link_to 'Destroy', anamnesi, method: :delete, data: { confirm: 'Are you sure?' } %></td>

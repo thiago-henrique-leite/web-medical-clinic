@@ -1,2 +1,0 @@
-module OccupationAreasHelper
-end
