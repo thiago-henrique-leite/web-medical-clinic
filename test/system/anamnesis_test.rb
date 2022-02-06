@@ -14,7 +14,7 @@ class AnamnesisTest < ApplicationSystemTestCase
     visit anamnesis_url
     click_on "New Anamnesi"
 
-    fill_in "Occupation area", with: @anamnesi.occupation_area_id
+    fill_in "Occupation area", with: @anamnesi.speciality_id
     click_on "Create Anamnesi"
 
     assert_text "Anamnesi was successfully created"
@@ -25,7 +25,7 @@ class AnamnesisTest < ApplicationSystemTestCase
     visit anamnesis_url
     click_on "Edit", match: :first
 
-    fill_in "Occupation area", with: @anamnesi.occupation_area_id
+    fill_in "Occupation area", with: @anamnesi.speciality_id
     click_on "Update Anamnesi"
 
     assert_text "Anamnesi was successfully updated"

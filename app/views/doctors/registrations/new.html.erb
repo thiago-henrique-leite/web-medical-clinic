@@ -43,7 +43,7 @@
         <div class="field">
           <div class="form-control shadow rounded">
             <%= f.label "Área de Atuação" %>
-            <%= f.collection_select :occupation_area_id, OccupationArea.order(:name), :id, :name %>
+            <%= f.collection_select :speciality_id, Speciality.order(:name), :id, :name %>
           </div>
         </div>
         <hr>

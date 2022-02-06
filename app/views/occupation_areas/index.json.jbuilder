@@ -1,1 +1,1 @@
-json.array! @occupation_areas, partial: "occupation_areas/occupation_area", as: :occupation_area
+json.array! @specialities, partial: "specialities/speciality", as: :speciality

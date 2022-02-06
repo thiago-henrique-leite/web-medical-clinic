@@ -12,13 +12,13 @@
   </thead>
 
   <tbody>
-    <% @occupation_areas.each do |occupation_area| %>
+    <% @specialities.each do |speciality| %>
       <tr>
-        <td><%= occupation_area.name %></td>
-        <td><%= occupation_area.description %></td>
-        <td><%= link_to 'Show', occupation_area %></td>
-        <td><%= link_to 'Edit', edit_occupation_area_path(occupation_area) %></td>
-        <td><%= link_to 'Destroy', occupation_area, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= speciality.name %></td>
+        <td><%= speciality.description %></td>
+        <td><%= link_to 'Show', speciality %></td>
+        <td><%= link_to 'Edit', edit_speciality_path(speciality) %></td>
+        <td><%= link_to 'Destroy', speciality, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,4 @@
 
 <br>
 
-<%= link_to 'New Occupation Area', new_occupation_area_path %>
+<%= link_to 'New Occupation Area', new_speciality_path %>

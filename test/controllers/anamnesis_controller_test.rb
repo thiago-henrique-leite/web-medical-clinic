@@ -17,7 +17,7 @@ class AnamnesisControllerTest < ActionDispatch::IntegrationTest
 
   test "should create anamnesi" do
     assert_difference('Anamnesi.count') do
-      post anamnesis_url, params: { anamnesi: { occupation_area_id: @anamnesi.occupation_area_id } }
+      post anamnesis_url, params: { anamnesi: { speciality_id: @anamnesi.speciality_id } }
     end
 
     assert_redirected_to anamnesi_url(Anamnesi.last)
@@ -34,7 +34,7 @@ class AnamnesisControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update anamnesi" do
-    patch anamnesi_url(@anamnesi), params: { anamnesi: { occupation_area_id: @anamnesi.occupation_area_id } }
+    patch anamnesi_url(@anamnesi), params: { anamnesi: { speciality_id: @anamnesi.speciality_id } }
     assert_redirected_to anamnesi_url(@anamnesi)
   end
 
