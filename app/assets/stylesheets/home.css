@@ -4050,8 +4050,8 @@ textarea.form-control-lg {
   justify-content: space-between;
 }
 .navbar-brand {
-  padding-top: 0.3125rem;
-  padding-bottom: 0.3125rem;
+  padding-top: 0.0025rem;
+  padding-bottom: 0.0025rem;
   margin-right: 1rem;
   font-size: 1.25rem;
   text-decoration: none;
@@ -11351,11 +11351,15 @@ p {
   font-weight: 700;
 }
 #mainNav .navbar-brand {
-  color: #ffc800;
-  font-family: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  color: #000;
+  font-family: "Roboto Slab", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   font-weight: 700;
-  letter-spacing: 0.0625em;
-  text-transform: uppercase;
+  /* font-style: italic; */
+  font-weight: bold;
+  letter-spacing: 0.0100em;
+  color: var(--bs-gray-dark);
+  /* text-transform: uppercase; */
+  text-shadow: 0 0 0.2em #FFF, 0 0 0.2em #FFF, 0 0 0.2em #FFF;
 }
 #mainNav .navbar-brand img {
   height: 1.5rem;
@@ -11416,6 +11420,19 @@ header.masthead {
   background-position: center center;
   background-size: cover;
   opacity: 0.9;
+}
+
+header.masthead2 {
+  padding-top: 30rem;
+  padding-bottom: 10rem;
+  text-align: center;
+  color: #000;
+  background-image: url("doctor.jpg"); 
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+  opacity: 0.8;
 }
 
 header.masthead .masthead-subheading {

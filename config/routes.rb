@@ -12,5 +12,7 @@ Rails.application.routes.draw do
 
   get 'dashboard/patient', to: 'dashboard_patient#index'
   get 'dashboard/doctor', to: 'dashboard_doctor#index'
+  get '/logout' => 'sessions#destroy'
+  get '/consultation/:id/destroy', to: 'consultations#destroy'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

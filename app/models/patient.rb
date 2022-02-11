@@ -29,7 +29,8 @@ class Patient < ApplicationRecord
   validates :gender, 
     inclusion: { in: %w[M F], message: 'Gênero inválido.' }
     
-  after_create :fill_address_by_zipcode, :format_cpf
+  after_create :fill_address_by_zipcode
+  after_create :format_cpf
 
   def format_cpf
     self.cpf = CPF.new(self.cpf).formatted

@@ -25,8 +25,7 @@ class ConsultationsController < ApplicationController
 
     respond_to do |format|
       if @consultation.save
-        format.html { redirect_to consultation_url(@consultation), notice: "Consultation was successfully created." }
-        format.json { render :show, status: :created, location: @consultation }
+        format.html { redirect_to "/dashboard/doctor#consults", notice: "Consulta agendada com sucesso!" }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @consultation.errors, status: :unprocessable_entity }
@@ -36,14 +35,15 @@ class ConsultationsController < ApplicationController
 
   # PATCH/PUT /consultations/1 or /consultations/1.json
   def update
-    respond_to do |format|
-      if @consultation.update(consultation_params)
-        format.html { redirect_to consultation_url(@consultation), notice: "Consultation was successfully updated." }
-        format.json { render :show, status: :ok, location: @consultation }
+    if @consultation.update(consultation_params)
+      if current_doctor.present?
+        redirect_to "/dashboard/doctor#consults"
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @consultation.errors, status: :unprocessable_entity }
+        redirect_to "/dashboard/doctor#consults"
       end
+    else
+      format.html { render :edit, status: :unprocessable_entity }
+      format.json { render json: @consultation.errors, status: :unprocessable_entity }
     end
   end
 
@@ -51,10 +51,7 @@ class ConsultationsController < ApplicationController
   def destroy
     @consultation.destroy
 
-    respond_to do |format|
-      format.html { redirect_to consultations_url, notice: "Consultation was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to '/dashboard/doctor#consults'
   end
 
   private

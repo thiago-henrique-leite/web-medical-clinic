@@ -1,37 +1,69 @@
-<%= form_with(model: consultation) do |form| %>
-  <% if consultation.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(consultation.errors.count, "error") %> prohibited this consultation from being saved:</h2>
+<div class="container">
+  <div id="logreg-forms">
+    <div class="row justify-content-center">
+      <% if consultation.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(consultation.errors.count, "error") %> prohibited this consultation from being saved:</h2>
 
-      <ul>
-        <% consultation.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+          <ul>
+            <% consultation.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%= form_with(model: consultation) do |f| %>
+        <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Agendamento de Consulta</h1>
+
+        <div class="field">
+          <div class="form-control shadow rounded">
+            <%= f.label "Paciente" %>
+            <%= f.collection_select :patient_id, Patient.order(:name), :id, :name %>
+          </div>
+        </div>
+
+        <%= f.hidden_field :doctor_id, value: current_doctor.id %>
+
+        <div class="field">
+          <%= f.date_field :consultation_date, class: "form-control shadow rounded", placeholder: "Data" %>
+        </div>
+
+        <hr>
+        <div class="form-group row justify-content-center">
+            <%= f.submit "Agendar", class: "btn btn-outline-light btn-lg signup" %>
+            <style> 
+              .btn.btn-outline-light.btn-lg.signup {
+                  background-color: green;
+                  transition: all 0.3s;
+                  cursor: pointer;
+                  align-items: center;
+              }
+              .btn.btn-outline-light.btn-lg.signup:hover{
+                -webkit-filter: drop-shadow(7px 5px 3px rgba(0,0,0,.5));
+                filter: drop-shadow(7px 5px 3px rgba(0,0,0,.5));
+              }
+            </style>  
+          </div>
+
+          <div class="form-group row justify-content-center">
+            <%= link_to "Voltar", "/dashboard/doctor", class: "btn btn-outline-light btn-lg back" %><br/> 
+            <style> 
+              .btn.btn-outline-light.btn-lg.back {
+                  background-color: red;
+                  transition: all 0.3s;
+                  cursor: pointer;
+                  align-items: center;
+              }
+              .btn.btn-outline-light.btn-lg.back:hover{
+                -webkit-filter: drop-shadow(7px 5px 3px rgba(0,0,0,.5));
+                filter: drop-shadow(7px 5px 3px rgba(0,0,0,.5));
+              }
+            </style>  
+          </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :patient_id %>
-    <%= form.text_field :patient_id %>
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :doctor_id %>
-    <%= form.text_field :doctor_id %>
-  </div>
 
-  <div class="field">
-    <%= form.label :consultation_date %>
-    <%= form.date_field :consultation_date %>
-  </div>
 
-  <div class="field">
-    <%= form.label :link %>
-    <%= form.text_field :link %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>

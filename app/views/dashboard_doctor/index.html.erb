@@ -1,1 +1,135 @@
-<h1>Dashboard do Médico</h1>
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Table 09</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="css/style.css">
+
+	</head>
+<body>
+
+
+<!-- Navigation-->
+<header class="masthead2">
+  <% image_tag("doctor.jpg", class: "background-image", id: "doctor.jpg") %>
+</header>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+      <a class="navbar-brand" href="#page-top">Olá, <%=current_doctor.name%></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars ms-1"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+              <li class="nav-item"><a class="nav-link" href="/">Home</a></li><style></style>
+              <li class="nav-item"><a class="nav-link" href="#userdata">Dados Pessoais</a></li>
+              <li class="nav-item"><a class="nav-link" href="#consults">Consultas</a></li>
+              <li class="nav-item"><a class="nav-link" href="#schedule">Agendar Consulta</a></li>
+              <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li><style>#mainNav .navbar-nav .nav-item .nav-link {color: #fff;}</style>
+          </ul>
+      </div>
+  </div>
+</nav>
+<section class="ftco-section" id="userdata">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-5">
+        <h2 class="heading-section"><b>Dados Pessoais</b></h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+      <%# <b class="text-person-data">Dados Pessoais</b><style>.text-person-data {color: black  }</style> %>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>CRM</th>
+                <th>Especialidade</th>
+                <th>Data de Nascimento</th>
+                <th>Telefone</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td><%= current_doctor.name %></td>
+                <td><%= current_doctor.email %></td>
+                <td><%= current_doctor.crm %></td>
+                <td><%= current_doctor.speciality.name %></td>
+                <td><%= current_doctor.birthday.strftime("%d/%m/%Y") %></td>
+                <td><%= current_doctor.phone %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+</section><hr>
+<section class="ftco-section" id="consults">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-5">
+        <h2 class="heading-section"><b>Consultas Agendadas</b></h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="table-wrap">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Paciente</th>
+                <th>CPF</th>
+                <th>Data</th>
+                <th>Link</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% current_doctor.consultations.each do |consultation| %>
+                <tr>
+                  <th scope="row"><%= consultation.id %></th>
+                  <td><%= consultation.patient.name %></td>
+                  <td><%= consultation.patient.format_cpf %></td>
+                  <td><%= consultation.consultation_date.strftime("%d/%m/%Y") %></td>
+                  <td><%= link_to consultation.link, consultation.link %></td>
+                  <td><%= link_to 'Editar', edit_consultation_path(consultation) %></td>
+                  <td><%= link_to 'Excluir', "/consultation/#{consultation.id}/destroy", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><hr>
+
+<a class="btn btn-primary btn-xl text-uppercase" href="/consultations/new" id="schedule">Agendar Consulta</a>
+    <style>
+      .btn-xl {
+        justify-content: center; 
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        width: 400px;
+        margin: 0 auto;
+      }
+  </style>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+<br>
