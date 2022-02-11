@@ -23,14 +23,11 @@ class PrescriptionsController < ApplicationController
   def create
     @prescription = Prescription.new(prescription_params)
 
-    respond_to do |format|
-      if @prescription.save
-        format.html { redirect_to prescription_url(@prescription), notice: "Prescription was successfully created." }
-        format.json { render :show, status: :created, location: @prescription }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @prescription.errors, status: :unprocessable_entity }
-      end
+    if @prescription.save
+      redirect_to "/dashboard/doctor#consults"
+    else
+      format.html { render :new, status: :unprocessable_entity }
+      format.json { render json: @prescription.errors, status: :unprocessable_entity }
     end
   end
 

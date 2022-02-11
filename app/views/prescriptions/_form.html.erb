@@ -1,27 +1,62 @@
-<%= form_with(model: prescription) do |form| %>
-  <% if prescription.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(prescription.errors.count, "error") %> prohibited this prescription from being saved:</h2>
+<div class="container">
+  <div id="logreg-forms">
+    <div class="row justify-content-center">
+      <% if prescription.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(prescription.errors.count, "error") %> prohibited this prescription from being saved:</h2>
 
-      <ul>
-        <% prescription.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+          <ul>
+            <% prescription.errors.each do |error| %>
+              <li><%= error.full_message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+      <%= form_with(model: prescription) do |f| %>
+        <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Prescrição Médica</h1>
+
+        <div class="field">
+          <div class="form-control shadow rounded">
+            <%= f.text_area :description, placeholder: "Prescrição de exames, remédios e tratamentos para o paciente..", :cols => 36, :rows => 15 %>
+          </div>
+        </div>
+
+        <%= f.hidden_field :consultation_id, value: params[:consultation_id] %>
+
+        <hr>
+        <div class="form-group row justify-content-center">
+            <%= f.submit "Enviar", class: "btn btn-outline-light btn-lg signup" %>
+            <style> 
+              .btn.btn-outline-light.btn-lg.signup {
+                  background-color: green;
+                  transition: all 0.3s;
+                  cursor: pointer;
+                  align-items: center;
+              }
+              .btn.btn-outline-light.btn-lg.signup:hover{
+                -webkit-filter: drop-shadow(7px 5px 3px rgba(0,0,0,.5));
+                filter: drop-shadow(7px 5px 3px rgba(0,0,0,.5));
+              }
+            </style>  
+          </div>
+
+          <div class="form-group row justify-content-center">
+            <%= link_to "Voltar", "/dashboard/doctor#consults", class: "btn btn-outline-light btn-lg back" %><br/> 
+            <style> 
+              .btn.btn-outline-light.btn-lg.back {
+                  background-color: red;
+                  transition: all 0.3s;
+                  cursor: pointer;
+                  align-items: center;
+              }
+              .btn.btn-outline-light.btn-lg.back:hover{
+                -webkit-filter: drop-shadow(7px 5px 3px rgba(0,0,0,.5));
+                filter: drop-shadow(7px 5px 3px rgba(0,0,0,.5));
+              }
+            </style>  
+          </div>
+      <% end %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :consultation_id %>
-    <%= form.text_field :consultation_id %>
   </div>
+</div>
 
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>

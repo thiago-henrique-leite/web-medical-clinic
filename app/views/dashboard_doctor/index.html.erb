@@ -83,7 +83,7 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <div class="table-wrap">
+        <%# <div class="table-wrap"> %>
           <table class="table table-striped">
             <thead>
               <tr>
@@ -92,6 +92,9 @@
                 <th>CPF</th>
                 <th>Data</th>
                 <th>Link</th>
+                <th></th>
+                <th></th>
+                <th></th>
               </tr>
             </thead>
 
@@ -102,14 +105,18 @@
                   <td><%= consultation.patient.name %></td>
                   <td><%= consultation.patient.format_cpf %></td>
                   <td><%= consultation.consultation_date.strftime("%d/%m/%Y") %></td>
-                  <td><%= link_to consultation.link, consultation.link %></td>
+                  <td><%= link_to consultation.link, consultation.link, target: '_blank'%></td>
                   <td><%= link_to 'Editar', edit_consultation_path(consultation) %></td>
                   <td><%= link_to 'Excluir', "/consultation/#{consultation.id}/destroy", method: :delete, data: { confirm: 'Are you sure?' } %></td>
+                  <td><%= link_to 'Prescrição', "/prescription/#{consultation.id}/new" %></td>
+                  <%# <td><a class="btn btn-primary" href="/consultations/<%=consultation.id% >/edit">Editar</a></td>
+                  <%# <td><a class="btn btn-primary" href="/consultation/<%=consultation.id% >/destroy">Excluir</a></td> %>
+                  <%# <td><a class="btn btn-primary" href="/prescription/<%=consultation.id% >/new">Prescrever</a></td> %>
                 </tr>
               <% end %>
             </tbody>
           </table>
-        </div>
+        <%# </div> %>
       </div>
     </div>
   </div>
