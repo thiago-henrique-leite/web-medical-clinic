@@ -20,8 +20,6 @@ class Doctor < ApplicationRecord
 
   after_create :format_cpf
 
-  private
-
   def format_cpf
     self.cpf = CPF.new(self.cpf).formatted
   end

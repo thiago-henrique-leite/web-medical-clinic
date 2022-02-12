@@ -51,6 +51,7 @@
             <thead>
               <tr>
                 <th>Nome</th>
+                <th>CPF</th>
                 <th>Email</th>
                 <th>CRM</th>
                 <th>Especialidade</th>
@@ -62,6 +63,7 @@
             <tbody>
               <tr>
                 <td><%= current_doctor.name %></td>
+                <td><%= current_doctor.format_cpf %></td>
                 <td><%= current_doctor.email %></td>
                 <td><%= current_doctor.crm %></td>
                 <td><%= current_doctor.speciality.name %></td>
@@ -131,7 +133,7 @@
                   <td><%= link_to 'Prescrição', "/prescription/#{consultation.id}/new" %></td>
                   <% if consultation.status == 'Pendente' %>
                     <td><%= link_to 'Cancelar', "/consultation/#{consultation.id}/cancel_doctor" %></td>
-                    <td><%= link_to 'Realizar', "/consultation/#{consultation.id}/perform_doctor" %></td>
+                    <td><%= link_to 'Realizada', "/consultation/#{consultation.id}/perform_doctor" %></td>
                   <% end %>
                   <% if consultation.status != 'Pendente' %>
                     <td></td>
