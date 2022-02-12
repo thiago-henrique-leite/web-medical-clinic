@@ -19,24 +19,24 @@ class ConsultationsController < ApplicationController
   def edit
   end
 
-  def cancel
+  def cancel_doctor
     Consultation.find(params[:id]).update(status: 'Cancelada')
-
-    if current_doctor.present?
-      redirect_to "/dashboard/doctor#consults"
-    else
-      redirect_to "/dashboard/doctor#consults"
-    end
+    redirect_to "/dashboard/doctor#consults"
   end
 
-  def perform
+  def perform_doctor
     Consultation.find(params[:id]).update(status: 'Realizada')
+    redirect_to "/dashboard/doctor#consults"
+  end
 
-    if current_doctor.present?
-      redirect_to "/dashboard/doctor#consults"
-    else
-      redirect_to "/dashboard/doctor#consults"
-    end
+  def cancel_patient
+    Consultation.find(params[:id]).update(status: 'Cancelada')
+    redirect_to "/dashboard/patient#consults"
+  end
+
+  def perform_patient
+    Consultation.find(params[:id]).update(status: 'Realizada')
+    redirect_to "/dashboard/patient#consults"
   end
 
   # POST /consultations or /consultations.json

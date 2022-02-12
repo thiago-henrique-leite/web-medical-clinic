@@ -1,1 +1,229 @@
-<h1>Dashboard do Paciente</h1>
+<!doctype html>
+<html lang="en">
+  <head>
+  	<title>Patient Dashboard</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	
+	<link rel="stylesheet" href="css/style.css">
+
+	</head>
+<body>
+
+
+<!-- Navigation-->
+<header class="masthead2">
+  <% image_tag("doctor.jpg", class: "background-image", id: "doctor.jpg") %>
+</header>
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+  <div class="container">
+      <a class="navbar-brand" href="#page-top">Olá, <%=current_patient.name%></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fas fa-bars ms-1"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
+              <li class="nav-item"><a class="nav-link" href="/">Home</a></li><style></style>
+              <li class="nav-item"><a class="nav-link" href="#userdata">Dados Pessoais</a></li>
+              <li class="nav-item"><a class="nav-link" href="#consults">Consultas</a></li>
+              <li class="nav-item"><a class="nav-link" href="#schedule">Agendar Consulta</a></li>
+              <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li><style>#mainNav .navbar-nav .nav-item .nav-link {color: #fff;}</style>
+          </ul>
+      </div>
+  </div>
+</nav>
+<section class="ftco-section" id="userdata">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-5">
+        <h2 class="heading-section"><b>Dados Pessoais</b></h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+      <%# <b class="text-person-data">Dados Pessoais</b><style>.text-person-data {color: black  }</style> %>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Nome</th>
+                <th>CPF</th>
+                <th>Email</th>
+                <th>Data de Nascimento</th>
+                <th>Telefone</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td><%= current_patient.name %></td>
+                <td><%= current_patient.cpf %></td>
+                <td><%= current_patient.email %></td>
+                <td><%= current_patient.birthday.strftime("%d/%m/%Y") %></td>
+                <td><%= current_patient.phone %></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Convênio</th>
+                <th>Carteirinha</th>
+                <th>Estado Civil</th>
+                <th>Profissão</th>
+                <th>Gênero</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td><%= current_patient.health_insurance %></td>
+                <td><%= current_patient.card_number %></td>
+                <td><%= current_patient.marital_status %></td>
+                <td><%= current_patient.profession %></td>
+                <td><%= current_patient.gender %></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>CEP</th>
+                <th>Rua</th>
+                <th>Bairro</th>
+                <th>Estado</th>
+                <th>Cidade</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td><%= current_patient.zipcode %></td>
+                <td><%= current_patient.address %></td>
+                <td><%= current_patient.neighborhood %></td>
+                <td><%= current_patient.state %></td>
+                <td><%= current_patient.city %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  </div>
+</section><hr>
+<section class="ftco-section" id="consults">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-5">
+        <h2 class="heading-section"><b>Consultas Agendadas</b></h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%# <div class="table-wrap"> %>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Data</th>
+                <th>Link</th>
+                <th>Horário</th>
+                <th>Status</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% current_patient.consultations.each do |consultation| %>
+                <tr>
+                  <%= consultation.update_status %>
+                  <th scope="row"><%= consultation.id %></th>
+                  <td><%= consultation.consultation_date.strftime("%d/%m/%Y") %></td>
+                  <td><%= link_to consultation.link, consultation.link, target: '_blank'%></td>
+                  <td><%= consultation.horary %></td>
+
+                  <% if consultation.status == 'Pendente' %>
+                    <td><a class="btn btn-warning"><%= consultation.status %></a></td>
+                  <% end %>
+                  <% if consultation.status == 'Cancelada' %>
+                    <td><a class="btn btn-danger"><%= consultation.status %></a></td>
+                  <% end %>
+                  <% if consultation.status == 'Realizada' %>
+                    <td><a class="btn btn-success"><%= consultation.status %></a></td>
+                  <% end %>
+                  <% if consultation.status == 'Faltou' %>
+                    <td><a class="btn btn-danger"><%= consultation.status %></a></td>
+                  <% end %>
+
+                  <td><%= link_to 'Anamnese', "/anamnesis_consultation/#{consultation.id}/new" %></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        <%# </div> %>
+      </div>
+    </div>
+  </div>
+</section><hr>
+<section class="ftco-section" id="consults">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-5">
+        <h2 class="heading-section"><b>Prescrições</b></h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%# <div class="table-wrap"> %>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID Consulta</th>
+                <th>Prescrição</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% current_patient.consultations.map(&:prescription).compact.each do |prescription| %>
+                <tr>
+                  <td><%= prescription.consultation_id %></td>
+                  <td><%= prescription.description %></td>
+              <% end %>
+            </tbody>
+          </table>
+        <%# </div> %>
+      </div>
+    </div>
+  </div>
+</section><hr>
+
+<a class="btn btn-primary btn-xl text-uppercase" href="/consultations/new" id="schedule">Agendar Consulta</a>
+    <style>
+      .btn-xl {
+        justify-content: center; 
+        display: block;
+        margin: 0 auto;
+        text-align: center;
+        width: 400px;
+        margin: 0 auto;
+      }
+  </style>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/popper.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+</body>
+<br>

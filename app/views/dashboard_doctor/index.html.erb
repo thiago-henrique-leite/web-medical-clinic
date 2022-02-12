@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  	<title>Table 09</title>
+  	<title>Doctor Dashboard</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -130,8 +130,8 @@
                   <td><%= link_to 'Excluir', "/consultation/#{consultation.id}/destroy", method: :delete, data: { confirm: 'Are you sure?' } %></td>
                   <td><%= link_to 'Prescrição', "/prescription/#{consultation.id}/new" %></td>
                   <% if consultation.status == 'Pendente' %>
-                    <td><%= link_to 'Cancelar', "/consultation/#{consultation.id}/cancel" %></td>
-                    <td><%= link_to 'Realizar', "/consultation/#{consultation.id}/perform" %></td>
+                    <td><%= link_to 'Cancelar', "/consultation/#{consultation.id}/cancel_doctor" %></td>
+                    <td><%= link_to 'Realizar', "/consultation/#{consultation.id}/perform_doctor" %></td>
                   <% end %>
                   <% if consultation.status != 'Pendente' %>
                     <td></td>
