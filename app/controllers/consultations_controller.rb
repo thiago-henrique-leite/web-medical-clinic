@@ -19,6 +19,16 @@ class ConsultationsController < ApplicationController
   def edit
   end
 
+  def cancel
+    Consultation.find(params[:id]).update(status: 'Cancelada')
+
+    if current_doctor.present?
+      redirect_to "/dashboard/doctor#consults"
+    else
+      redirect_to "/dashboard/doctor#consults"
+    end
+  end
+
   # POST /consultations or /consultations.json
   def create
     @consultation = Consultation.new(consultation_params)
@@ -35,6 +45,12 @@ class ConsultationsController < ApplicationController
 
   # PATCH/PUT /consultations/1 or /consultations/1.json
   def update
+    # return if @consultation.doctor.consultations.where.not(id: @consultation.id).where(
+    #   patient_id: params[:patient_id].present? ? params[:patient_id] : @consultation.patient_id, 
+    #   consultation_date: params[:consultation_date].present? ? params[:consultation_date] : @consultation.consultation_date,
+    #   horary: params[:horary].present? ? params[:horary] : @consultation.horary
+    # ).present?
+
     if @consultation.update(consultation_params)
       if current_doctor.present?
         redirect_to "/dashboard/doctor#consults"

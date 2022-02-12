@@ -21,7 +21,7 @@ ActiveRecord::Base.transaction do
     email: 'medico@email.com',
     crm: '1213', 
     speciality_id: 1, 
-    name: 'Olavo da Silva', 
+    name: 'Rogers Campanello', 
     cpf: '966.510.320-20', 
     birthday: Date.parse('13/03/1967'), 
     phone: '(11) 96723-2198',
@@ -38,7 +38,7 @@ ActiveRecord::Base.transaction do
     profession: 'Desenvolvedor de Software', 
     zipcode: '05020-000', 
     address_number: 200, 
-    name: 'João Pereira', 
+    name: 'José Silva', 
     cpf: '369.151.630-00', 
     birthday: Date.parse('17/09/1999'), 
     phone: '(11) 98872-0921',
@@ -51,7 +51,7 @@ ActiveRecord::Base.transaction do
   end
 
   ## Populando a tabela de Consultations
-  Consultation.find_or_create_by(patient_id: 1, doctor_id: 1, consultation_date: Date.parse('10/07/2022'))
+  Consultation.find_or_create_by(patient_id: 1, doctor_id: 1, consultation_date: Date.parse('10/07/2022'), horary: '10:20')
 
   ## Populando a tabela de AnamnesisConsultations
   AnamnesisConsultation.find_or_create_by(anamnesi_id: 1, consultation_id: 1)

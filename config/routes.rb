@@ -15,5 +15,6 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy'
   get '/consultation/:id/destroy', to: 'consultations#destroy'
   get '/prescription/:consultation_id/new', to: 'prescriptions#new'
+  get '/consultation/:id/cancel', to: 'consultations#cancel'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
