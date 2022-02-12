@@ -7,6 +7,8 @@ class Consultation < ApplicationRecord
   validates :consultation_date,
     timeliness: { after: -> { Date.current }, type: :date, after_message: 'Data inválida' }
 
+  validates :status, inclusion: { in: ['Pendente', 'Realizada', 'Faltou', 'Cancelada'], message: 'Status de consulta inválido.', default: 'Pendente' }
+
   before_create :generate_google_meet_link
 
   private

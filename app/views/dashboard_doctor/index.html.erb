@@ -92,8 +92,8 @@
                 <th>CPF</th>
                 <th>Data</th>
                 <th>Link</th>
-                <th></th>
-                <th></th>
+                <th>Horário</th>
+                <th>Status</th>
                 <th></th>
               </tr>
             </thead>
@@ -106,6 +106,21 @@
                   <td><%= consultation.patient.format_cpf %></td>
                   <td><%= consultation.consultation_date.strftime("%d/%m/%Y") %></td>
                   <td><%= link_to consultation.link, consultation.link, target: '_blank'%></td>
+                  <td><%= consultation.horary %></td>
+
+                  <% if consultation.status == 'Pendente' %>
+                    <td><a href="#" class="btn btn-warning"><%= consultation.status %></a></td>
+                  <% end %>
+                  <% if consultation.status == 'Cancelada' %>
+                    <td><a href="#" class="btn btn-danger"><%= consultation.status %></a></td>
+                  <% end %>
+                  <% if consultation.status == 'Realizada' %>
+                    <td><a href="#" class="btn btn-success"><%= consultation.status %></a></td>
+                  <% end %>
+                  <% if consultation.status == 'Faltou' %>
+                    <td><a href="#" class="btn btn-danger"><%= consultation.status %></a></td>
+                  <% end %>
+
                   <td><%= link_to 'Editar', edit_consultation_path(consultation) %></td>
                   <td><%= link_to 'Excluir', "/consultation/#{consultation.id}/destroy", method: :delete, data: { confirm: 'Are you sure?' } %></td>
                   <td><%= link_to 'Prescrição', "/prescription/#{consultation.id}/new" %></td>
