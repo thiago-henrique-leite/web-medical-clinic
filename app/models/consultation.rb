@@ -11,6 +11,18 @@ class Consultation < ApplicationRecord
 
   before_create :generate_google_meet_link
 
+  def update_status
+    consult_date = DateTime.new(
+      self.consultation_date.year,
+      self.consultation_date.month,
+      self.consultation_date.day,
+      self.horary.split(':').first.to_i,
+      self.horary.split(':').last.to_i
+    )
+
+    self.update!(status: 'Faltou') if consult_date < Date.today
+  end
+
   private
 
   def generate_google_meet_link

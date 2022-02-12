@@ -98,12 +98,14 @@
                 <th></th>
                 <th></th>
                 <th></th>
+                <th></th>
               </tr>
             </thead>
 
             <tbody>
               <% current_doctor.consultations.each do |consultation| %>
                 <tr>
+                  <%= consultation.update_status %>
                   <th scope="row"><%= consultation.id %></th>
                   <td><%= consultation.patient.name %></td>
                   <td><%= consultation.patient.format_cpf %></td>
@@ -112,16 +114,16 @@
                   <td><%= consultation.horary %></td>
 
                   <% if consultation.status == 'Pendente' %>
-                    <td><a href="#" class="btn btn-warning"><%= consultation.status %></a></td>
+                    <td><a class="btn btn-warning"><%= consultation.status %></a></td>
                   <% end %>
                   <% if consultation.status == 'Cancelada' %>
-                    <td><a href="#" class="btn btn-danger"><%= consultation.status %></a></td>
+                    <td><a class="btn btn-danger"><%= consultation.status %></a></td>
                   <% end %>
                   <% if consultation.status == 'Realizada' %>
-                    <td><a href="#" class="btn btn-success"><%= consultation.status %></a></td>
+                    <td><a class="btn btn-success"><%= consultation.status %></a></td>
                   <% end %>
                   <% if consultation.status == 'Faltou' %>
-                    <td><a href="#" class="btn btn-danger"><%= consultation.status %></a></td>
+                    <td><a class="btn btn-danger"><%= consultation.status %></a></td>
                   <% end %>
 
                   <td><%= link_to 'Editar', edit_consultation_path(consultation) %></td>
@@ -129,8 +131,10 @@
                   <td><%= link_to 'Prescrição', "/prescription/#{consultation.id}/new" %></td>
                   <% if consultation.status == 'Pendente' %>
                     <td><%= link_to 'Cancelar', "/consultation/#{consultation.id}/cancel" %></td>
+                    <td><%= link_to 'Realizar', "/consultation/#{consultation.id}/perform" %></td>
                   <% end %>
                   <% if consultation.status != 'Pendente' %>
+                    <td></td>
                     <td></td>
                   <% end %>
                   <%# <td><a class="btn btn-primary" href="/consultations/<%=consultation.id% >/edit">Editar</a></td>

@@ -29,6 +29,16 @@ class ConsultationsController < ApplicationController
     end
   end
 
+  def perform
+    Consultation.find(params[:id]).update(status: 'Realizada')
+
+    if current_doctor.present?
+      redirect_to "/dashboard/doctor#consults"
+    else
+      redirect_to "/dashboard/doctor#consults"
+    end
+  end
+
   # POST /consultations or /consultations.json
   def create
     @consultation = Consultation.new(consultation_params)
@@ -78,6 +88,6 @@ class ConsultationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def consultation_params
-      params.require(:consultation).permit(:patient_id, :doctor_id, :consultation_date, :link)
+      params.require(:consultation).permit(:patient_id, :doctor_id, :consultation_date, :link, :horary, :status)
     end
 end
