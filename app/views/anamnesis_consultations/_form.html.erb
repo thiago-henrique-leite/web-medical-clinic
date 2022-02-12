@@ -18,13 +18,10 @@
         <%= f.hidden_field :patient_id, value: current_patient.id %>
         <%= f.hidden_field :consultation_id, value: params[:consultation_id] %>
 
-        <%= @response = "" %>
         <% Anamnesi.find(1).questions.each do |question| %>
           <%= f.label question.description %>
-          <%= f.text_field :partial_answer, class: "form-control shadow rounded", :id=>'keyword' %>
+          <%= f.text_field :answer, class: "form-control shadow rounded" %>
         <% end %><hr>
-
-         <%= f.hidden_field :answer, value: @response %>
 
         <div class="form-group row justify-content-center">
             <%= f.submit "Responder", class: "btn btn-outline-light btn-lg signup" %>

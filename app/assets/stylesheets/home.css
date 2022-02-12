@@ -11435,6 +11435,20 @@ header.masthead2 {
   opacity: 0.8;
 }
 
+header.masthead3 {
+  padding-top: 30rem;
+  padding-bottom: 20rem;
+  text-align: center;
+  color: #000;
+  background-image: url("patient.jpg"); 
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+  background-position: center center;
+  background-size: cover;
+  opacity: 0.8;
+}
+
+
 header.masthead .masthead-subheading {
   font-size: 1.5rem;
   font-style: normal;
