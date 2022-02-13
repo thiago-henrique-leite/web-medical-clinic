@@ -128,17 +128,19 @@
                     <td><a class="btn btn-danger"><%= consultation.status %></a></td>
                   <% end %>
 
-                  <td><%= link_to 'Editar', edit_consultation_path(consultation) %></td>
-                  <td><%= link_to 'Excluir', "/consultation/#{consultation.id}/destroy", method: :delete, data: { confirm: 'Are you sure?' } %></td>
-                  <td><%= link_to 'Prescrição', "/prescription/#{consultation.id}/new" %></td>
                   <% if consultation.status == 'Pendente' %>
+                    <td><%= link_to 'Editar', edit_consultation_path(consultation) %></td>
+                    <td><%= link_to 'Prescrição', "/prescription/#{consultation.id}/new" %></td>
                     <td><%= link_to 'Cancelar', "/consultation/#{consultation.id}/cancel_doctor" %></td>
                     <td><%= link_to 'Realizada', "/consultation/#{consultation.id}/perform_doctor" %></td>
                   <% end %>
                   <% if consultation.status != 'Pendente' %>
                     <td></td>
                     <td></td>
+                    <td></td>
+                    <td></td>
                   <% end %>
+                  <td><%= link_to 'Excluir', "/consultation/#{consultation.id}/destroy", method: :delete, data: { confirm: 'Are you sure?' } %></td>
                   <%# <td><a class="btn btn-primary" href="/consultations/<%=consultation.id% >/edit">Editar</a></td>
                   <%# <td><a class="btn btn-primary" href="/consultation/<%=consultation.id% >/destroy">Excluir</a></td> %>
                   <%# <td><a class="btn btn-primary" href="/prescription/<%=consultation.id% >/new">Prescrever</a></td> %>

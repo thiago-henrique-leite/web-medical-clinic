@@ -18,10 +18,25 @@
         <%= f.hidden_field :patient_id, value: current_patient.id %>
         <%= f.hidden_field :consultation_id, value: params[:consultation_id] %>
 
-        <% Anamnesi.find(1).questions.each do |question| %>
-          <%= f.label question.description %>
-          <%= f.text_field :answer, class: "form-control shadow rounded" %>
-        <% end %><hr>
+        <%= f.label Anamnesi.find(1).questions[0].description %>
+        <%= f.text_field :answer, class: "form-control shadow rounded" %>
+        <%= f.label Anamnesi.find(1).questions[1].description %>
+        <%= f.text_field :answer1, class: "form-control shadow rounded" %>
+        <%= f.label Anamnesi.find(1).questions[2].description %>
+        <%= f.text_field :answer2, class: "form-control shadow rounded" %>
+        <%= f.label Anamnesi.find(1).questions[3].description %>
+        <%= f.text_field :answer3, class: "form-control shadow rounded" %>
+        <%= f.label Anamnesi.find(1).questions[4].description %>
+        <%= f.text_field :answer4, class: "form-control shadow rounded" %>
+        <%= f.label Anamnesi.find(1).questions[5].description %>
+        <%= f.text_field :answer5, class: "form-control shadow rounded" %>
+        <%= f.label Anamnesi.find(1).questions[6].description %>
+        <%= f.text_field :answer6, class: "form-control shadow rounded" %>
+        <%= f.label Anamnesi.find(1).questions[7].description %>
+        <%= f.text_field :answer7, class: "form-control shadow rounded" %>
+        <%= f.label Anamnesi.find(1).questions[8].description %>
+        <%= f.text_field :answer8, class: "form-control shadow rounded" %>
+        <hr>
 
         <div class="form-group row justify-content-center">
             <%= f.submit "Responder", class: "btn btn-outline-light btn-lg signup" %>

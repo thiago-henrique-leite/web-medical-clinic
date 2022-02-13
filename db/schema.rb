@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_02_11_230437) do
+ActiveRecord::Schema.define(version: 2022_02_13_042243) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(version: 2022_02_11_230437) do
     t.text "answer"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "answer1"
+    t.text "answer2"
+    t.text "answer3"
+    t.text "answer4"
+    t.text "answer5"
+    t.text "answer6"
+    t.text "answer7"
+    t.text "answer8"
     t.index ["anamnesi_id"], name: "index_anamnesis_consultations_on_anamnesi_id"
     t.index ["consultation_id"], name: "index_anamnesis_consultations_on_consultation_id"
   end

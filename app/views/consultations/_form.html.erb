@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <% if consultation.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(consultation.errors.count, "erro(s)") %> ao tentar agendar a consulta!</h2>
+          <h2><%= pluralize(consultation.errors.count, "erro") %> ao tentar agendar a consulta!</h2>
 
           <ul>
             <% consultation.errors.each do |error| %>
@@ -23,7 +23,7 @@
             </div>
           </div>
 
-          <%= f.hidden_field :patient_id, value: current_doctor.id %>
+          <%= f.hidden_field :doctor_id, value: current_doctor.id %>
         <% else %>
           <div class="field">
             <div class="form-control shadow rounded">

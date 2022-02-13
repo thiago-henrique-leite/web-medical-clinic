@@ -25,8 +25,7 @@ class AnamnesisConsultationsController < ApplicationController
 
     respond_to do |format|
       if @anamnesis_consultation.save
-        format.html { redirect_to anamnesis_consultation_url(@anamnesis_consultation), notice: "Anamnesis consultation was successfully created." }
-        format.json { render :show, status: :created, location: @anamnesis_consultation }
+        format.html { redirect_to "/dashboard/patient#consults", notice: "Anamnesi was successfully created." }
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @anamnesis_consultation.errors, status: :unprocessable_entity }
