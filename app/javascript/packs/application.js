@@ -5,9 +5,6 @@
 
 import { Application } from "stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"
-// Had to change
-import DoISuportIt from 'components/DoISuportIt';
-
 // To (notice the missing `./`)
 import DoISuportIt from './components/DoISuportIt';
 

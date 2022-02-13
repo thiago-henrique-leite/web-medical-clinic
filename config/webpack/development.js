@@ -1,6 +1,3 @@
-// I Had to change:
-import DoISuportIt from 'components/DoISuportIt';
-
 // to (notice the missing `./`)
 import DoISuportIt from './components/DoISuportIt';
 
