@@ -64,6 +64,18 @@ class AnamnesisConsultationsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def anamnesis_consultation_params
-      params.require(:anamnesis_consultation).permit(:anamnesi_id, :consultation_id, :answer)
+      params.require(:anamnesis_consultation).permit(
+        :anamnesi_id, 
+        :consultation_id, 
+        :answer, 
+        :answer1,
+        :answer2,
+        :answer3,
+        :answer4,
+        :answer5,
+        :answer6,
+        :answer7,
+        :answer8
+      )
     end
 end

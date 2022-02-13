@@ -20,17 +20,17 @@ class ConsultationsController < ApplicationController
   end
 
   def cancel_doctor
-    Consultation.find(params[:id]).update(status: 'Cancelada')
+    Consultation.find(params[:id]).update!(status: 'Cancelada')
     redirect_to "/dashboard/doctor#consults"
   end
 
   def perform_doctor
-    Consultation.find(params[:id]).update(status: 'Realizada')
+    Consultation.find(params[:id]).update!(status: 'Realizada')
     redirect_to "/dashboard/doctor#consults"
   end
 
   def cancel_patient
-    Consultation.find(params[:id]).update(status: 'Cancelada')
+    Consultation.find(params[:id]).update!(status: 'Cancelada')
     redirect_to "/dashboard/patient#consults"
   end
 

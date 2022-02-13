@@ -62,12 +62,6 @@ ActiveRecord::Base.transaction do
   Consultation.find_or_create_by(patient_id: 5, doctor_id: 4, consultation_date: Date.parse('28/10/2022'), horary: '15:10')
   Consultation.find_or_create_by(patient_id: 5, doctor_id: 5, consultation_date: Date.parse('30/11/2022'), horary: '16:30')
 
-  ## Populando a tabela de AnamnesisConsultations
-  20.times do |index|
-    AnamnesisConsultation.find_or_create_by(anamnesi_id: 1, consultation_id: index+1)
-  end
-
-
   ## Populando a tabela de Prescriptions
   5.times do |index|
     Prescription.find_or_create_by(consultation_id: index+1, description: 'Realizar exame de sangue.')
@@ -96,5 +90,10 @@ ActiveRecord::Base.transaction do
       description: description,
       anamnesi_id: 1
     )
+  end
+
+  ## Populando tabela da Anamnesis Consultation
+  4.times do |index|
+    AnamnesisConsultation.create!(anamnesi_id: 1, consultation_id: index+1, answer: 'Não', answer1: 'Não', answer2: 'Não', answer3: 'Não', answer4: 'Não', answer5: 'Não', answer6: 'Não', answer7: 'Não', answer8: 'Não')
   end
 end

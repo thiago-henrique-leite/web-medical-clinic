@@ -33,7 +33,7 @@
               <li class="nav-item"><a class="nav-link" href="#userdata">Dados Pessoais</a></li>
               <li class="nav-item"><a class="nav-link" href="#consults">Consultas</a></li>
               <li class="nav-item"><a class="nav-link" href="#prescriptions">Prescrições</a></li>
-              <li class="nav-item"><a class="nav-link" href="#schedule">Agendar Consulta</a></li>
+              <li class="nav-item"><a class="nav-link" href="#anamneses">Anamneses</a></li>
               <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li><style>#mainNav .navbar-nav .nav-item .nav-link {color: #fff;}</style>
           </ul>
       </div>
@@ -133,6 +133,7 @@
               <tr>
                 <th>ID</th>
                 <th>Médico(a)</th>
+                <th>Especialidade</th>
                 <th>Data</th>
                 <th>Link</th>
                 <th>Horário</th>
@@ -149,6 +150,7 @@
                   <%= consultation.update_status %>
                   <th scope="row"><%= consultation.id %></th>
                   <td><%= consultation.doctor.name %></td>
+                  <td><%= consultation.doctor.speciality.name %></td>
                   <td><%= consultation.consultation_date.strftime("%d/%m/%Y") %></td>
                   <td><%= link_to consultation.link, consultation.link, target: '_blank'%></td>
                   <td><%= consultation.horary %></td>
@@ -166,11 +168,18 @@
                     <td><a class="btn btn-danger"><%= consultation.status %></a></td>
                   <% end %>
 
-                  <td><%= link_to 'Anamnese', "/anamnesis_consultation/#{consultation.id}/new" %></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
+                  <% if consultation.anamnesis_consultation.nil? %>
+                    <th><%= link_to 'Responder Anamnese', "/anamnesis_consultation/#{consultation.id}/new" %></th>
+                    <td></td>
+                  <% else %>
+                    <td><td>
+                  <% end %>
+
+                  <% if consultation.status == 'Pendente' %>
+                    <td><%= link_to 'Cancelar', "/consultation/#{consultation.id}/cancel_patient" %></td>
+                  <% else %>
+                    <td></td>
+                  <% end %>
                 </tr>
               <% end %>
             </tbody>
@@ -203,6 +212,41 @@
                 <tr>
                   <td><%= prescription.consultation_id %></td>
                   <td><%= prescription.description %></td>
+              <% end %>
+            </tbody>
+          </table>
+        <%# </div> %>
+      </div>
+    </div>
+  </div>
+</section><hr>
+<section class="ftco-section" id="anamneses">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-5">
+        <h2 class="heading-section"><b>Anamneses</b></h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%# <div class="table-wrap"> %>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID Consulta</th>
+                <th>Respostas</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <% current_patient.consultations.map(&:anamnesis_consultation).compact.each do |anamnese| %>
+                <tr>
+                  <td><%= anamnese.consultation_id %></td>
+                  <td>
+                    <% anamnese.get_answers.split('<br>').each do |response| %>
+                      <%= response %><br>
+                    <% end %>
+                  </td>
               <% end %>
             </tbody>
           </table>
