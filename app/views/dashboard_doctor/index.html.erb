@@ -112,7 +112,7 @@
                   <td><%= consultation.patient.name %></td>
                   <td><%= consultation.patient.format_cpf %></td>
                   <td><%= consultation.consultation_date.strftime("%d/%m/%Y") %></td>
-                  <th><%= link_to consultation.link, consultation.link, target: '_blank'%></th>
+                  <td><%= link_to consultation.link, consultation.link, target: '_blank'%></td>
                   <td><%= consultation.horary %></td>
 
                   <% if consultation.status == 'Pendente' %>
