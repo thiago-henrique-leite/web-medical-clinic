@@ -132,11 +132,11 @@
             <thead>
               <tr>
                 <th>ID</th>
+                <th>Médico(a)</th>
                 <th>Data</th>
                 <th>Link</th>
                 <th>Horário</th>
                 <th>Status</th>
-                <th></th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -148,6 +148,7 @@
                 <tr>
                   <%= consultation.update_status %>
                   <th scope="row"><%= consultation.id %></th>
+                  <td><%= consultation.doctor.name %></td>
                   <td><%= consultation.consultation_date.strftime("%d/%m/%Y") %></td>
                   <td><%= link_to consultation.link, consultation.link, target: '_blank'%></td>
                   <td><%= consultation.horary %></td>

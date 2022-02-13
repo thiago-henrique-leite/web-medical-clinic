@@ -45,7 +45,11 @@ class ConsultationsController < ApplicationController
 
     respond_to do |format|
       if @consultation.save
-        format.html { redirect_to "/dashboard/doctor#consults", notice: "Consulta agendada com sucesso!" }
+        if current_doctor.present?
+          format.html { redirect_to "/dashboard/doctor#consults", notice: "Consulta agendada com sucesso!" }
+        else
+          format.html { redirect_to "/dashboard/patient#consults", notice: "Consulta agendada com sucesso!" }
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @consultation.errors, status: :unprocessable_entity }
@@ -55,12 +59,6 @@ class ConsultationsController < ApplicationController
 
   # PATCH/PUT /consultations/1 or /consultations/1.json
   def update
-    # return if @consultation.doctor.consultations.where.not(id: @consultation.id).where(
-    #   patient_id: params[:patient_id].present? ? params[:patient_id] : @consultation.patient_id, 
-    #   consultation_date: params[:consultation_date].present? ? params[:consultation_date] : @consultation.consultation_date,
-    #   horary: params[:horary].present? ? params[:horary] : @consultation.horary
-    # ).present?
-
     if @consultation.update(consultation_params)
       if current_doctor.present?
         redirect_to "/dashboard/doctor#consults"

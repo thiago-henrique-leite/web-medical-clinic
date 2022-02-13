@@ -3,7 +3,7 @@
     <div class="row justify-content-center">
       <% if consultation.errors.any? %>
         <div id="error_explanation">
-          <h2><%= pluralize(consultation.errors.count, "error") %> prohibited this consultation from being saved:</h2>
+          <h2><%= pluralize(consultation.errors.count, "erro(s)") %> ao tentar agendar a consulta!</h2>
 
           <ul>
             <% consultation.errors.each do |error| %>
@@ -15,14 +15,24 @@
       <%= form_with(model: consultation) do |f| %>
         <h1 class="h3 mb-3 font-weight-normal" style="text-align: center">Agendamento de Consulta</h1>
 
-        <div class="field">
-          <div class="form-control shadow rounded">
-            <%= f.label "Paciente" %>
-            <%= f.collection_select :patient_id, Patient.order(:name), :id, :name %>
+        <% if current_doctor.present? %>
+          <div class="field">
+            <div class="form-control shadow rounded">
+              <%= f.label "Paciente" %>
+              <%= f.collection_select :patient_id, Patient.order(:name), :id, :name %>
+            </div>
           </div>
-        </div>
 
-        <%= f.hidden_field :doctor_id, value: current_doctor.id %>
+          <%= f.hidden_field :patient_id, value: current_doctor.id %>
+        <% else %>
+          <div class="field">
+            <div class="form-control shadow rounded">
+              <%= f.label "Médico(a)" %>
+              <%= f.collection_select :doctor_id, Doctor.order(:name), :id, :name %>
+            </div>
+          </div>
+          <%= f.hidden_field :patient_id, value: current_patient.id %>
+        <% end %>
 
         <div class="field">
           <%= f.date_field :consultation_date, class: "form-control shadow rounded", placeholder: "Data" %>
