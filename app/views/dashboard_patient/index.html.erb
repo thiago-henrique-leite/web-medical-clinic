@@ -208,7 +208,7 @@
             </thead>
 
             <tbody>
-              <% current_patient.consultations.map(&:prescription).compact.each do |prescription| %>
+              <% Prescription.where(consultation_id: current_patient.consultations.pluck(:id)).each do |prescription| %>
                 <tr>
                   <td><%= prescription.consultation_id %></td>
                   <td><%= prescription.description %></td>

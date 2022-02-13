@@ -2,7 +2,7 @@ class Consultation < ApplicationRecord
   belongs_to :patient
   belongs_to :doctor
   has_one :anamnesis_consultation
-  has_one :prescription
+  has_many :prescriptions
 
   validates :consultation_date,
     timeliness: { after: -> { Date.current }, type: :date, after_message: 'Data inválida' }

@@ -60,7 +60,11 @@
           </div>
 
           <div class="form-group row justify-content-center">
-            <%= link_to "Voltar", "/dashboard/doctor#consults", class: "btn btn-outline-light btn-lg back" %><br/> 
+            <% if current_doctor.present? %>
+              <%= link_to "Voltar", "/dashboard/doctor#consults", class: "btn btn-outline-light btn-lg back" %> 
+            <% else %>
+              <%= link_to "Voltar", "/dashboard/patient#consults", class: "btn btn-outline-light btn-lg back" %>
+            <% end %>
             <style> 
               .btn.btn-outline-light.btn-lg.back {
                   background-color: red;
