@@ -34,31 +34,35 @@ Agora que a imagem da aplicação e o banco de dados foram criados, basta rodar 
 
 ### Home
 
-![img](./imgs/00_home-00.jpeg)
-![img](./imgs/01_home-01-features.jpeg)
-![img](./imgs/02_home-02-usecases.jpeg)
-![img](./imgs/03_home-03-devs.jpeg)
+![img](./screens/00_home-00.jpeg)
+![img](./screens/01_home-01-features.jpeg)
+![img](./screens/02_home-02-usecases.jpeg)
+![img](./screens/03_home-03-devs.jpeg)
 
 ### Login
 
-![img](./imgs/10_login-medico.jpeg)
-![img](./imgs/11_login-paciente.jpeg)
+![img](./screens/10_login-medico.jpeg)
+![img](./screens/11_login-paciente.jpeg)
 
 ### Sign Up
 
-![img](./imgs/20_sign-up-medico.jpeg)
-![img](./imgs/21_sign-up-paciente.jpeg)
+![img](./screens/20_sign-up-medico.jpeg)
+![img](./screens/21_sign-up-paciente.jpeg)
 
 ### Dashboards
 
 #### Médico
 
-![img](./imgs/30_dashboard-medico-00.jpeg)
-![img](./imgs/31_dashboard-medico-01.jpeg)
-![img](./imgs/32_dashboard-medico-02.jpeg)
+![img](./screens/30_dashboard-medico-00.jpeg)
+![img](./screens/31_dashboard-medico-01.jpeg)
+![img](./screens/32_dashboard-medico-02.jpeg)
 
 #### Paciente
 
-![img](./imgs/40_dashboard-paciente-00.jpeg)
-![img](./imgs/41_dashboard-paciente-01.jpeg)
-![img](./imgs/42_dashboard-paciente-02.jpeg)
+![img](./screens/40_dashboard-paciente-00.jpeg)
+![img](./screens/41_dashboard-paciente-01.jpeg)
+![img](./screens/42_dashboard-paciente-02.jpeg)
+
+#### Agendar Consulta
+
+![img](./screens/50_agendar_consulta-01.jpeg)
